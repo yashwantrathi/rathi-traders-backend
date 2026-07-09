@@ -8,7 +8,7 @@ exports.generateUPIQR = async (req, res) => {
     const [orders] = await pool.query('SELECT * FROM orders WHERE id = ? AND customer_id = ?', [order_id, req.customer.id]);
     if (!orders.length) return res.status(404).json({ success: false, message: 'Order not found' });
     const order = orders[0];
-    const upiId = process.env.UPI_ID || 'rathitraders@paytm';
+    const upiId = process.env.UPI_ID || '8123975900@ybl';
     const businessName = process.env.UPI_BUSINESS_NAME || 'Rathi Traders';
     const amount = parseFloat(order.total_amount).toFixed(2);
     const note = `RathiTraders-Order-${order.order_number}`;
